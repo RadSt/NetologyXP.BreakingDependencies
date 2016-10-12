@@ -79,10 +79,10 @@ var taxes = {
     "Connecticut" : 0.0635
 };
 
-function AddNewState(stateName, baseTax, groceries, preciptionDrug, preparedFood){
-    AddNewGroseryItemTax(groceries, stateName);
-    AddNeewPreciptionDrugItemTax(preciptionDrug, stateName);
-    AddNewPreparedFoodItemTax(preparedFood, stateName);
+function AddNewState(stateName, baseTax, groceriesTax, preciptionDrugTax, preparedFoodTax){
+    AddNewGroseryItemTax(groceriesTax, stateName);
+    AddNeewPreciptionDrugItemTax(preciptionDrugTax, stateName);
+    AddNewPreparedFoodItemTax(preparedFoodTax, stateName);
     AddNewBaseTax(stateName, baseTax);
 }
 
@@ -91,21 +91,21 @@ function AddNewBaseTax(stateName, baseTax){
         taxes[stateName] = baseTax;
 }
 
-function AddNewGroseryItemTax(groceries, stateName) {
-    if (groceries)
-        itemTypes.Groceries[stateName] = groceries;
+function AddNewGroseryItemTax(groceriesTax, stateName) {
+    if (groceriesTax)
+        itemTypes.Groceries[stateName] = groceriesTax;
 }
 
-function AddNeewPreciptionDrugItemTax(preciptionDrug, stateName) {
-    if (preciptionDrug)
-        itemTypes.PrescriptionDrug[stateName] = preciptionDrug;
+function AddNeewPreciptionDrugItemTax(preciptionDrugTax, stateName) {
+    if (preciptionDrugTax)
+        itemTypes.PrescriptionDrug[stateName] = preciptionDrugTax;
 }
 
-function AddNewPreparedFoodItemTax(preparedFood, stateName) {
+function AddNewPreparedFoodItemTax(preparedFoodTax, stateName) {
     if (!itemTypes.PreparedFood)
         itemTypes["PreparedFood"] = {};
-    if (preparedFood)
-        itemTypes.PreparedFood[stateName] = preparedFood;
+    if (preparedFoodTax)
+        itemTypes.PreparedFood[stateName] = preparedFoodTax;
 }
 
 AddNewState("Tennessee", 7, 5, 0, 0);
