@@ -82,7 +82,7 @@ function base(state) {
     return taxes[state];
 }
 
-function AddNewTaxByItemType(stateName, groceries, preciptionDrug, preparedFood){
+function AddNewState(stateName, groceries, preciptionDrug, preparedFood){
     AddNewGroseryItemTax(groceries, stateName);
     AddNeewPreciptionDrugItemTax(preciptionDrug, stateName);
     AddNewPreparedFoodItemTax(preparedFood, stateName);
@@ -105,8 +105,8 @@ function AddNewPreparedFoodItemTax(preparedFood, stateName) {
         itemTypes.PreparedFood[stateName] = preparedFood;
 }
 
-AddNewTaxByItemType("Tennessee",5,0,0);
-AddNewTaxByItemType("Texas","",0,"");
+AddNewState("Tennessee",5,0,0);
+AddNewState("Texas","",0,"");
 
 class TaxCalculator {
     // У этой функции нелья менять интерфейс
