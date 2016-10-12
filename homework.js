@@ -131,29 +131,29 @@ function printHaveANiceDay() {
     console.log(`----Have a nice day!-----`);
 }
 
-function calculatePriceFor(state, item) {
-    if (items[item].type === "PreparedFood") {
-        return calculatePriceForPreparedFood(state, item);
+function calculatePriceFor(stateName, itemName) {
+    if (items[itemName].type === "PreparedFood") {
+        return calculatePriceForPreparedFood(stateName, itemName);
     }
     else {
-        return calculatePriceForOtherFood(state, item);
+        return calculatePriceForOtherFood(stateName, itemName);
     }
 }
 
-function calculatePriceForPreparedFood(state, item) {
-    return ( 1 + taxes[state] ) * items[item].price;
+function calculatePriceForPreparedFood(stateName, itemName) {
+    return ( 1 + taxes[stateName] ) * items[itemName].price;
 }
 
-function calculatePriceForOtherFood(state, item) {
-    return calculateTax(state, items[item].type) * items[item].price + items[item].price;
+function calculatePriceForOtherFood(stateName, itemName) {
+    return calculateTax(stateName, items[itemName].type) * items[itemName].price + items[itemName].price;
 }
 
-function calculateTax(state, itemType) {
+function calculateTax(stateName, itemType) {
     var itemTypeTaxModifier = itemTypes[itemType];
-    if (itemTypeTaxModifier[state] === "") {
+    if (itemTypeTaxModifier[stateName] === "") {
         return 0;
     }
-    return taxes[state] + itemTypeTaxModifier[state];
+    return taxes[stateName] + itemTypeTaxModifier[stateName];
 }
 
 //############################
