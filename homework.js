@@ -107,13 +107,20 @@ class TaxCalculator {
 }
 
 function calculatePriceFor(state, item) {
-    var result = null;
     if (items[item].type === "PreparedFood") {
-        return result = ( 1 + base(state) ) * items[item].price;
+        return calculatePriceForPreparedFood(state, item);
     }
     else {
-        return result = calc(state, items[item].type) * items[item].price + items[item].price;
+        return calculatePriceForOtherFood(state, item);
     }
+}
+
+function calculatePriceForPreparedFood(state, item) {
+    return ( 1 + base(state) ) * items[item].price;
+}
+
+function calculatePriceForOtherFood(state, item) {
+    return calc(state, items[item].type) * items[item].price + items[item].price;
 }
 
 //############################
