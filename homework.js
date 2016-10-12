@@ -82,13 +82,7 @@ function base(state) {
     return taxes[state];
 }
 
-function calc(state, itemType) {
-    var itemTypeTaxModifier = itemTypes[itemType];
-    if (itemTypeTaxModifier[state] === "") {
-        return 0;
-    }
-    return base(state) + itemTypeTaxModifier[state];
-}
+
 
 class TaxCalculator {
     // У этой функции нелья менять интерфейс
@@ -123,7 +117,15 @@ function calculatePriceForPreparedFood(state, item) {
 }
 
 function calculatePriceForOtherFood(state, item) {
-    return calc(state, items[item].type) * items[item].price + items[item].price;
+    return calculateTax(state, items[item].type) * items[item].price + items[item].price;
+}
+
+function calculateTax(state, itemType) {
+    var itemTypeTaxModifier = itemTypes[itemType];
+    if (itemTypeTaxModifier[state] === "") {
+        return 0;
+    }
+    return base(state) + itemTypeTaxModifier[state];
 }
 
 //############################
