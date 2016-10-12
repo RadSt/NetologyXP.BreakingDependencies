@@ -118,7 +118,7 @@ function calculatePriceFor(state, item) {
 
 //############################
 //Production - код:
-production();
+//production();
 
 //############################
 //Тесты:
@@ -130,7 +130,7 @@ var tests = [
     () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
 ];
 //Раскомментируйте следующую строчку для запуска тестов:
-//runTests (tests);
+runTests (tests);
 
 //############################
 //Код ниже этой строчки не надо менять для выполнения домашней работы
