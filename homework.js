@@ -88,16 +88,17 @@ class TaxCalculator {
     // У этой функции нелья менять интерфейс
     // Но можно менять содержимое
     calculateTax() {
-        printSelectedState();
+        var stateName = getSelectedState();
+        printSelectedState(stateName);
         for (var i = 0; i < getOrdersCount(); i++) {
-            console.log(`${item}: $${calculatePriceFor(getSelectedState(), getSelectedItem()).toFixed(2)}`);
+            console.log(`${item}: $${calculatePriceFor(stateName, getSelectedItem()).toFixed(2)}`);
         }
         printHaveANiceDay();
     }
 }
 
-function printSelectedState() {
-    console.log(`----------${getSelectedState()}-----------`);
+function printSelectedState(stateName) {
+    console.log(`----------${stateName}-----------`);
 }
 function printHaveANiceDay() {
     console.log(`----Have a nice day!-----`);
