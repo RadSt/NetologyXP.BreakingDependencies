@@ -79,10 +79,16 @@ var taxes = {
     "Connecticut" : 0.0635
 };
 
-function AddNewState(stateName, groceries, preciptionDrug, preparedFood){
+function AddNewState(stateName, baseTax, groceries, preciptionDrug, preparedFood){
     AddNewGroseryItemTax(groceries, stateName);
     AddNeewPreciptionDrugItemTax(preciptionDrug, stateName);
     AddNewPreparedFoodItemTax(preparedFood, stateName);
+    AddNewBaseTax(stateName, baseTax);
+}
+
+function AddNewBaseTax(stateName, baseTax){
+    if(baseTax)
+        taxes[stateName] = baseTax;
 }
 
 function AddNewGroseryItemTax(groceries, stateName) {
@@ -102,8 +108,8 @@ function AddNewPreparedFoodItemTax(preparedFood, stateName) {
         itemTypes.PreparedFood[stateName] = preparedFood;
 }
 
-AddNewState("Tennessee",5,0,0);
-AddNewState("Texas","",0,"");
+AddNewState("Tennessee", 7, 5, 0, 0);
+AddNewState("Texas", 6.25, "", 0, "");
 
 class TaxCalculator {
     // У этой функции нелья менять интерфейс
