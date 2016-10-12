@@ -82,7 +82,15 @@ function base(state) {
     return taxes[state];
 }
 
+function AddNewTaxByItemType(stateName, groceries, preciptionDrug, preparedFood){
+    if(groceries) itemTypes.Groceries[stateName] = groceries;
+    itemTypes.PrescriptionDrug[stateName] = preciptionDrug;
+    itemTypes["PreparedFood"] = {};
+    itemTypes.PreparedFood[stateName] = preparedFood;
+}
 
+AddNewTaxByItemType("Tennessee",5,0,0);
+AddNewTaxByItemType("Texas","",0,"");
 
 class TaxCalculator {
     // У этой функции нелья менять интерфейс
