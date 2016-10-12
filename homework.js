@@ -94,13 +94,9 @@ class TaxCalculator {
     // У этой функции нелья менять интерфейс
     // Но можно менять содержимое
     calculateTax() {
-        var ordersCount = getOrdersCount();
-        var state = getSelectedState();
-        console.log(`----------${state}-----------`);
-        for (var i = 0; i < ordersCount; i++) {
-            var item = getSelectedItem();
-            var result = calculatePriceFor(state, item);
-            console.log(`${item}: $${result.toFixed(2)}`);
+        console.log(`----------${getSelectedState()}-----------`);
+        for (var i = 0; i < getOrdersCount(); i++) {
+            console.log(`${item}: $${calculatePriceFor(getSelectedState(), getSelectedItem()).toFixed(2)}`);
         }
         console.log(`----Have a nice day!-----`);
     }
