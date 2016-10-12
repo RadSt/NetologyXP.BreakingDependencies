@@ -83,10 +83,26 @@ function base(state) {
 }
 
 function AddNewTaxByItemType(stateName, groceries, preciptionDrug, preparedFood){
-    if(groceries) itemTypes.Groceries[stateName] = groceries;
-    itemTypes.PrescriptionDrug[stateName] = preciptionDrug;
-    itemTypes["PreparedFood"] = {};
-    itemTypes.PreparedFood[stateName] = preparedFood;
+    AddNewGroseryItemTax(groceries, stateName);
+    AddNeewPreciptionDrugItemTax(preciptionDrug, stateName);
+    AddNewPreparedFoodItemTax(preparedFood, stateName);
+}
+
+function AddNewGroseryItemTax(groceries, stateName) {
+    if (groceries)
+        itemTypes.Groceries[stateName] = groceries;
+}
+
+function AddNeewPreciptionDrugItemTax(preciptionDrug, stateName) {
+    if (preciptionDrug)
+        itemTypes.PrescriptionDrug[stateName] = preciptionDrug;
+}
+
+function AddNewPreparedFoodItemTax(preparedFood, stateName) {
+    if (!itemTypes.PreparedFood)
+        itemTypes["PreparedFood"] = {};
+    if (preparedFood)
+        itemTypes.PreparedFood[stateName] = preparedFood;
 }
 
 AddNewTaxByItemType("Tennessee",5,0,0);
