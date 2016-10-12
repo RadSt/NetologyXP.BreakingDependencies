@@ -69,18 +69,15 @@ var itemTypes =
         }
     };
 
-function base(state) {
-    var taxes = {
-        "Alabama" : 0.04,
-        "Alaska" : 0,
-        "Arizona" : 0.056,
-        "Arkansas" : 0.065,
-        "California" : 0.075,
-        "Colorado" : 0.029,
-        "Connecticut" : 0.0635
-    };
-    return taxes[state];
-}
+var taxes = {
+    "Alabama" : 0.04,
+    "Alaska" : 0,
+    "Arizona" : 0.056,
+    "Arkansas" : 0.065,
+    "California" : 0.075,
+    "Colorado" : 0.029,
+    "Connecticut" : 0.0635
+};
 
 function AddNewState(stateName, groceries, preciptionDrug, preparedFood){
     AddNewGroseryItemTax(groceries, stateName);
@@ -138,7 +135,7 @@ function calculatePriceFor(state, item) {
 }
 
 function calculatePriceForPreparedFood(state, item) {
-    return ( 1 + base(state) ) * items[item].price;
+    return ( 1 + taxes[state] ) * items[item].price;
 }
 
 function calculatePriceForOtherFood(state, item) {
@@ -150,7 +147,7 @@ function calculateTax(state, itemType) {
     if (itemTypeTaxModifier[state] === "") {
         return 0;
     }
-    return base(state) + itemTypeTaxModifier[state];
+    return taxes[state] + itemTypeTaxModifier[state];
 }
 
 //############################
